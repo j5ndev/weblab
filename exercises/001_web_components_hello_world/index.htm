@@ -5,19 +5,19 @@
   </head>
   <body>
     <article>
-      <h1>Web Components</h1>
-      <p>Below is a simple hello world web component &#128515;</p>
+      <h1>Web Components - Hello World</h1>
+      <p>Below is a simple web component that displays a message on page load. &#128515;</p>
 
       <hello-world></hello-world>
 
       <script  type="text/javascript">
         class HelloWorld extends HTMLParagraphElement {
             constructor() {
-            super();
-            const shadow = this.attachShadow({ mode: "closed" });
-            const text = document.createElement("span");
-            text.textContent = 'Hello, world!';
-            shadow.appendChild(text);
+                super();
+                const shadow = this.attachShadow({ mode: "closed" });
+                const text = document.createElement("span");
+                text.textContent = 'Hello, world!';
+                shadow.appendChild(text);
             }
         }
         customElements.define("hello-world", HelloWorld, { extends: "p" });
