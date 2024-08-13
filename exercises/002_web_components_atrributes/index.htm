@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web Components - Attributes</title>
+  </head>
+  <body>
+    <article>
+      <h1>Web Components - Attributes</h1>
+      <p>Below is a simple web component that displays a message using a value from the name attribute.</p>
+
+      <hello-attribute id="ha" name="Frank"></hello-attribute>
+
+      <script  type="text/javascript">
+        class HelloAttribute extends HTMLParagraphElement {
+          constructor() {
+            super();
+            this.name = 'User';
+          }
+          static get observedAttributes() {
+            return ['name'];
+          }
+          attributeChangedCallback(property, old, current) {
+            if (old === current) return;
+            this.name = current;
+            this.connectedCallback();
+          }
+          connectedCallback() {
+            this.textContent = `Hello, ${ this.name }!`;
+          }
+        }
+        customElements.define("hello-attribute", HelloAttribute, { extends: "p" });
+      </script>
+    </article>
+  </body>
+</html>
